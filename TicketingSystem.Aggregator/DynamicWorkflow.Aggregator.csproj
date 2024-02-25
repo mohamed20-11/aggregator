@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>a9cfb537-c2bc-43b2-a21f-a81ff2d09ec4</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\EscalationLevel\EscalationLevelMessages.proto" />
+    <None Remove="Protos\EscalationLevel\EscalationLevelProto.proto" />
+    <None Remove="Protos\MainClassification.proto" />
+    <None Remove="Protos\Org\OrgProto.proto" />
+    <None Remove="Protos\RequestInstance\RequestInstanceModels.proto" />
+    <None Remove="Protos\RequestInstance\RequestInstanceService.proto" />
+    <None Remove="Protos\RequestTemplate\RequestTemplateModels.proto" />
+    <None Remove="Protos\RequestTemplate\RequestTemplateService.proto" />
+    <None Remove="Protos\Roles\RolePermissionWorkspaceProto.proto" />
+    <None Remove="Protos\Sla\SlaMessages.proto" />
+    <None Remove="Protos\Sla\SlaProto.proto" />
+    <None Remove="Protos\User\UserOrgProto.proto" />
+    <None Remove="Protos\User\UserProto.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.59.0" />
+    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.59.0" />
+    <PackageReference Include="IdentityServer4" Version="4.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\test.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\OrgHierarchyMembers\OrgMembersProto.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\Org\OrgProto.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\RequestInstance\RequestInstanceModels.proto" GrpcServices="None" />
+    <Protobuf Include="Protos\RequestInstance\RequestInstanceService.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\RequestTemplate\RequestTemplateModels.proto" GrpcServices="None" />
+    <Protobuf Include="Protos\RequestTemplate\RequestTemplateService.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\EscalationLevel\EscalationLevelMessages.proto" GrpcServices="None" />
+    <Protobuf Include="Protos\EscalationLevel\EscalationLevelProto.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\RequestTemplate\RequestTemplateModels.proto" GrpcServices="None" />
+    <Protobuf Include="Protos\RequestTemplate\RequestTemplateService.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\Roles\RolePermissionWorkspaceProto.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\Sla\SlaMessages.proto" GrpcServices="None" />
+    <Protobuf Include="Protos\Sla\SlaProto.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\User\UserOrgProto.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\User\UserProto.proto" GrpcServices="Client" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="IGrpcServices\IUserInfoServices.cs" GrpcServices="None" />
+    <Compile Update="Services\UserInfoService.cs" GrpcServices="Client" />
+  </ItemGroup>
+
+</Project>

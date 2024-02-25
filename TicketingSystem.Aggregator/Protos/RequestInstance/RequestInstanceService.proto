@@ -1,0 +1,7 @@
+﻿syntax = "proto3";
+option csharp_namespace = "DynamicWorkflow.Aggregator.Protos";
+import "Protos/RequestInstance/RequestInstanceModels.proto";
+
+service RequestInstanceManager {
+	rpc GetRequestInstanceById (RequestInstanceId) returns (RequestInstanceResponse);
+}

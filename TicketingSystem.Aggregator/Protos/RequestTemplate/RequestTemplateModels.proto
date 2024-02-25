@@ -1,0 +1,27 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "DynamicWorkflow.Workflow.Application.Protos";
+
+message RequestTemplateId
+{
+	string Id=1;
+}
+message RequestTemplateByIdResponse
+{
+	string Name =1;
+	string CategoryName =2;
+	int32 PathCount =3;
+	repeated RequestTemplateStepResponse Steps =4;
+	string ErrorMessage =5;
+}
+
+message RequestTemplateStepResponse
+{
+   string Id =1;	
+   int32 StepNumber=2;
+   string ActionTakerId=3;
+   int32 ActionTackerType=4;
+   string RoleId =5;
+   string SlaId =6;
+}
+

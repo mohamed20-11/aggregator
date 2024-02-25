@@ -1,0 +1,134 @@
+﻿syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+option csharp_namespace = "DynamicWorkflow.Workflow.Application.Protos";
+
+
+service UserOrgProtoService {
+
+  rpc CheckUsers (Request) returns (  Response);
+   rpc CheckUser (RequestUser) returns (  Response);
+    rpc GetUsersByIds (RequestUserById) returns (  ResponsUsersGetUsersByName);
+	 rpc GetUsersByName (RequestGetUsersByName) returns (  ResponsUsersGetUsersByName);
+	 rpc GetUsersExcptedIds (RequestUserById) returns (  ResponsUsersById);
+	  rpc GetUsersForListOrgIds (RequestGetUsersForListOrgIds) returns (  ResponsGetUsersForListOrgIds);
+	  rpc GetUserById (RequestUser) returns (  ResponsUserById);
+	  rpc CheckLookup (RequestCheckLookup) returns (  ResponsCheckLookup);
+	  rpc GetMembersAndNonMembers (RequestUserByIdsPaginate) returns (  ResponsMembersAndNonMembers);
+	   rpc GetUsersByIdsPaginate (RequestUserByIdsPaginate) returns (  ResponsUsersByIdsPaginate);
+}
+message RequestUser {
+  string userId = 1;
+}
+message Request {
+ repeated string userId = 1;
+}
+
+message Response {
+  bool result = 1;
+}
+message RequestUserById {
+  repeated string userId = 1;
+}
+message RequestGetUsersByName {
+   string userName = 1;
+}
+message ResponsUsersGetUsersByName {
+  repeated ResponsUsersByName ResponsUser=1; 
+}
+message ResponsUsersByName{
+	 google.protobuf.StringValue FirstName=1 ; 
+	   google.protobuf.StringValue SecondName=2 ; 
+	 google.protobuf.StringValue UserName =3;
+	 google.protobuf.UInt32Value UserGender=4;
+	 google.protobuf.StringValue Email=5;
+	 google.protobuf.StringValue PhoneNumber=6;
+	 google.protobuf.StringValue ImgUrl=7;
+	 google.protobuf.StringValue userId=8;
+	   google.protobuf.StringValue Massge=9;
+google.protobuf.StringValue JobNameAr =11;
+google.protobuf.StringValue JobNameEn =12;
+}
+message ResponsUsersById {
+	repeated ResponsUserById ResponsUser=1; 
+}
+message RequestUserByIdsPaginate {
+  repeated string userId = 1;
+    int32 pageSize=2;
+ int32 pageNumber=3;
+  google.protobuf.StringValue Search=4;
+}
+message ResponsUsersByIdsPaginate {
+	repeated ResponsUserById ResponsUser=1; 
+	ResponsDto ResponsDto =2;
+
+}
+message ResponsMembersAndNonMembers {
+	repeated ResponsMembersAndNonMember ResponsMembersAndNonMember  =1;
+	 google.protobuf.StringValue Massge=2;
+	 ResponsDto ResponsDto =3;
+}
+message ResponsMembersAndNonMember {
+google.protobuf.StringValue FirstName=1 ; 
+	   google.protobuf.StringValue SecondName=2 ; 
+	 google.protobuf.StringValue UserName =3;
+	 google.protobuf.UInt32Value UserGender=4;
+	 google.protobuf.StringValue Email=5;
+	 google.protobuf.StringValue PhoneNumber=6;
+	 google.protobuf.StringValue ImgUrl=7;
+	 google.protobuf.StringValue userId=8;
+	  
+	   bool IsCheck=10;
+	     google.protobuf.StringValue JobNameAr =11;
+        google.protobuf.StringValue JobNameEn =12;
+
+         google.protobuf.StringValue JobId =13;
+}
+
+message ResponsUserById {
+	 google.protobuf.StringValue FirstName=1 ; 
+	   google.protobuf.StringValue SecondName=2 ; 
+	 google.protobuf.StringValue UserName =3;
+	 google.protobuf.UInt32Value UserGender=4;
+	 google.protobuf.StringValue Email=5;
+	 google.protobuf.StringValue PhoneNumber=6;
+	 google.protobuf.StringValue ImgUrl=7;
+	 google.protobuf.StringValue userId=8;
+	   google.protobuf.StringValue Massge=9;
+	        google.protobuf.StringValue JobNameAr =10;
+        google.protobuf.StringValue JobNameEn =11;
+
+         google.protobuf.StringValue JobId =12;
+}
+message RequestGetUsersForListOrgIds {
+  repeated StringList userIds = 1;
+}
+message ResponsGetUsersForListOrgIds {
+	repeated ResponsGetUsersForListOrgId ResponsUser=1; 
+
+}
+
+message ResponsGetUsersForListOrgId {
+	 google.protobuf.StringValue FirstName=1 ; 
+	   google.protobuf.StringValue SecondName=2 ; 
+	 google.protobuf.StringValue UserName =3;
+	 google.protobuf.UInt32Value UserGender=4;
+	 google.protobuf.StringValue Email=5;
+	 google.protobuf.StringValue PhoneNumber=6;
+	 google.protobuf.StringValue ImgUrl=7;
+	 google.protobuf.StringValue userId=8;
+}
+message StringList {
+    repeated string userId = 1;
+}
+message RequestCheckLookup {
+  string LookupId = 1;
+}
+message ResponsCheckLookup {
+  bool result = 1;
+}
+message ResponsDto{
+	int32 PageIndex =1;
+int32 TotalPages =2;
+int32 TotalItems =3;
+int32 PageSize =4;
+}

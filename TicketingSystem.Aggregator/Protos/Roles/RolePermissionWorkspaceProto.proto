@@ -1,0 +1,138 @@
+﻿syntax = "proto3";
+option csharp_namespace = "ControlPanel.UserManagement.Protos";
+
+service RoleWorkspaceProtoService {
+
+  rpc GetRoleByWorkspaceId (RequestGetRoleByWorkspaceId) returns (ResponseGetRoleByWorkspaceId);
+  rpc GetUserByWorkspaceId (RequestGetRoleByWorkspaceId) returns (ResponseGetUserByWorkspaceId);
+  rpc GetGroupByWorkspaceId (RequestGetRoleByWorkspaceId) returns (ResponseGetGroupByWorkspaceId);
+  rpc GetWorkspaceRoles (UM_RequestWorkspaceId) returns (UM_ResponseRoleId);
+  rpc GetWorkspacesByUserRoles (RequestLoggedUserRoles) returns (ResponseUserMatchingWorkspaces);
+  rpc PostPermissionToRole (RequestPostPermissionToRole) returns (ResponsePostPostPermissionToRole);
+  rpc GetMyWorkSpace (GetMyWorkSpaceRequest) returns (GetMyWorkSpaceResponse);
+  rpc GetRolesByIds(RolesIdsRequest) returns (RolesListResponse);
+  rpc GetRolesByCategoryId(RoleCategoryIdRequest) returns (RolesListResponse);
+}
+message RequestGetRoleByWorkspaceId {
+   string workSpaceId = 1;
+    optional string SearchTerm = 2 ;
+  optional int32 pageSize=3;
+   optional int32 pageNumber=4;
+}
+
+message ResponseGetRoleByWorkspaceId {
+  repeated RolesPermission RolesPermission = 1;
+     int32 PageIndex =2;
+		   int32 TotalPages =3;
+		   int32 TotalItems =4;
+		   int32 PageSize =5;
+		   string Message =6;
+		   int32 StatusEnum = 7;
+}
+message ResponseGetUserByWorkspaceId {
+	repeated UserPermission UserPermission=1;
+	     int32 PageIndex =2;
+		   int32 TotalPages =3;
+		   int32 TotalItems =4;
+		   int32 PageSize =5;
+		   string Message =6;
+		   int32 StatusEnum = 7;
+
+}
+
+message ResponseGetGroupByWorkspaceId {
+	repeated GroupPermission GroupPermission=1;
+	     int32 PageIndex =2;
+		   int32 TotalPages =3;
+		   int32 TotalItems =4;
+		   int32 PageSize =5;
+		   string Message =6;
+		   int32 StatusEnum = 7;
+
+}
+message RolesPermission{
+	string RoleNameAr = 1;
+	string RoleNameEn = 2;
+	string RoleId=3;
+  repeated  Permission permissions = 4;
+}
+message GroupPermission{
+	string GroupId=1;
+	string GroupName = 2;
+repeated Permission permissions = 3;
+}
+message UserPermission{
+	string UserId=1;
+	string FirstName = 2;
+	string SecondName = 3;
+	string ThirdName = 4;
+	string ForthName = 5;
+	string UserName = 6;
+	LK_JobName JobName=7;
+repeated Permission permissions = 8;
+}
+message Permission {
+	string PermissionId = 1;
+	string PermissionNameAr = 2;
+	string PermissionNameEn = 3;
+	string IsChecked = 4;
+    string Path = 5;
+}
+message LK_JobName{
+		 string NameAr =1;
+		 string NameEn =2;
+}
+message UM_RequestWorkspaceId {
+  string workspaceId=1;
+}
+
+message UM_ResponseRoleId {
+	repeated string RoleId=1;
+}
+
+message RequestLoggedUserRoles
+{
+	repeated string UserRoles = 1; 
+}
+
+message ResponseUserMatchingWorkspaces
+{
+	repeated string workspaceId = 1;
+}
+
+message ResponsePostPostPermissionToRole {
+  string message=1;
+}
+message RequestPostPermissionToRole {
+   string workspaceId=1;
+  repeated string PermissionId=2;
+   string RoleId=3;
+   int64 WorkSpaceKey=4;
+}
+message GetMyWorkSpaceResponse{
+	repeated string WorkSpaceIds = 1;
+}
+message GetMyWorkSpaceRequest{
+
+}
+message RolesIdsRequest
+{
+	repeated string RolesId=1;
+}
+message RoleResponse
+{
+	string RoleNameAr=1;
+	string RoleNameEn=2;
+	string RoleId =4;
+}
+message RolesListResponse
+{
+	repeated RoleResponse RolesList=1;
+}
+message RoleCategoryIdRequest
+{
+	string CategoryId=1;
+}
+
+
+

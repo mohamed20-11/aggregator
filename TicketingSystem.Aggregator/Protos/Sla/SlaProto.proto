@@ -1,0 +1,11 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "TicketingSystem.SLA.Protos";
+
+import "google/protobuf/empty.proto";
+import "Protos/Sla/SlaMessages.proto";
+
+service SlaProtoServices {
+	rpc GetSla (SlaIds) returns (ResponseSlaIdS);
+	rpc GetSlaDataList (SlaIds) returns (SlaListResponse);
+}

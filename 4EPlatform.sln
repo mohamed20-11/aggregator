@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicWorkflow.Aggregator", "TicketingSystem.Aggregator\DynamicWorkflow.Aggregator.csproj", "{C2763528-07D3-49A3-8FE3-92A70B388E94}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1C48EF4E-C6C6-474A-83F4-C74AF5634230}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{C6AE92BF-414B-43B3-BADC-FFDEDC7BA04F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DynamicWorkflow.Aggregator", "DynamicWorkflow.Aggregator", "{1091861E-E246-42AF-B774-F8E5012153A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2763528-07D3-49A3-8FE3-92A70B388E94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2763528-07D3-49A3-8FE3-92A70B388E94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2763528-07D3-49A3-8FE3-92A70B388E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2763528-07D3-49A3-8FE3-92A70B388E94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C2763528-07D3-49A3-8FE3-92A70B388E94} = {1091861E-E246-42AF-B774-F8E5012153A4}
+		{C6AE92BF-414B-43B3-BADC-FFDEDC7BA04F} = {1C48EF4E-C6C6-474A-83F4-C74AF5634230}
+		{1091861E-E246-42AF-B774-F8E5012153A4} = {C6AE92BF-414B-43B3-BADC-FFDEDC7BA04F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {472C61E6-DA0A-4206-9BE4-C4452C0C7C18}
+	EndGlobalSection
+EndGlobal

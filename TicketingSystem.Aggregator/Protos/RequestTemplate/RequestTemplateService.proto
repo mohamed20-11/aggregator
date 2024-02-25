@@ -1,0 +1,9 @@
+﻿syntax = "proto3";
+option csharp_namespace = "DynamicWorkflow.Workflow.Application.Protos";
+import "Protos/RequestTemplate/RequestTemplateModels.proto";
+
+service RequestTemplateProtoService
+{
+	rpc GetRequestTemplateById(RequestTemplateId) returns (RequestTemplateByIdResponse);
+}
+

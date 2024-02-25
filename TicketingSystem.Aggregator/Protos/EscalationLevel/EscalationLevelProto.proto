@@ -1,0 +1,11 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "DynamicWorkflow.Workflow.Application.Protos";
+
+import "google/protobuf/empty.proto";
+import "Protos/EscalationLevel/EscalationLevelMessages.proto";
+
+service EscalationLevelProtoService {
+	rpc GetAllEscalationLevels (RequestAllEscalationLevels) returns (ResponseAllEscalationLevels);
+	rpc GetEscalationLevelById (RequestEscalationLevelById) returns (ResponseEscalationLevelById);
+}

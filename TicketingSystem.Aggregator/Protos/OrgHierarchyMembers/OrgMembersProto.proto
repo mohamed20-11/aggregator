@@ -1,0 +1,87 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+option csharp_namespace = "ControlPanel.ORGHierararchy.Protos";
+
+service OrgMembersProtoService {
+
+  rpc PostOrgMembers (RequestPostOrgMembers) returns (  ResponsePostOrgMembers);
+   rpc PutOrgMembers (RequestPutOrgMembers) returns (  ResponsePutOrgMembers);
+       rpc GetAllMembers (RequestGetAllMembers) returns (  ResponseGetAllMembers); 
+       rpc GetNonMembers (RequestGetAllMembers) returns (  ResponseGetNonMembers); 
+        rpc GetMember (RequestGetMember) returns (  ResponseGetMembers); 
+         rpc GetOrgForMember (RequestGetOrgForMember) returns (  ResponseGetAllMembers);
+           rpc GetAllOrgSForMember (RequestGetOrgForMember) returns (  ResponseGetAllOrgSForMember);
+
+           rpc PutOrgsForMembers (RequestPutOrgsForMembers) returns (  ResponsePostOrgMembers);
+         rpc GetOrgForMembers (RequestGetOrgForMembers) returns (  ResponseGetAllMembers);
+}
+message RequestPostOrgMembers{
+
+        string OrgId =1;
+        repeated string MembersId =2;
+}
+message RequestPutOrgsForMembers{
+    repeated string OrgIds=1;
+    string MebmerId=2;
+}
+message RequestGetOrgForMember{
+
+        string UserId =1;
+       
+}
+message RequestGetOrgForMembers{
+
+       repeated string UserId =1;
+       
+}
+message ResponsePutOrgMembers {
+    string Massge=1;
+   bool  result = 2;
+}
+message RequestPutOrgMembers{
+
+        string OrgId =1;
+}
+message ResponsePostOrgMembers {
+  string Massge=1;
+}
+message RequestGetAllMembers {
+   google.protobuf.StringValue OrgId = 1;
+}
+message RequestGetMember {
+   google.protobuf.StringValue OrgId = 1;
+   google.protobuf.StringValue MemberId = 2;
+}
+
+message ResponseGetAllMembers{
+    repeated ResponseGetMembers  ResponseALLManger=1;
+    string Massge=2; 
+}
+message ResponseGetMembers{
+
+        google.protobuf.StringValue OrgId =1;
+        google.protobuf.StringValue OrgNameAr =2;
+        google.protobuf.StringValue OrgNameEn =3;
+        google.protobuf.StringValue MebmerId =4;
+        google.protobuf.StringValue Massge=8;
+}
+message ResponseGetNonMembers{
+    google.protobuf.StringValue OrgId =1;
+        google.protobuf.StringValue OrgNameAr =2;
+        google.protobuf.StringValue OrgNameEn =3;
+        google.protobuf.StringValue MebmerId =4;
+}
+message ResponseGetAllOrgSForMember{
+    repeated ResponseGetMember ResponseGetMember=1;
+}
+message ResponseGetMember{
+
+        google.protobuf.StringValue OrgId =1;
+        google.protobuf.StringValue OrgNameAr =2;
+        google.protobuf.StringValue OrgNameEn =3;
+        bool isCheked = 5;
+        google.protobuf.StringValue Massge=8;
+         google.protobuf.StringValue ParentId =6;
+      repeated   ResponseGetMember Children =7; 
+}

@@ -1,0 +1,41 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "DynamicWorkflow.Workflow.Application.Protos";
+
+message RequestAllEscalationLevels
+{
+	int32 PageIndex = 1;
+	int32 PageSize = 2;
+}
+
+message ResponseAllEscalationLevels 
+{
+	repeated EscalationLevelProto EscalationLevel = 1;
+	int32 PageIndex = 2;
+	int32 TotalPages = 3;
+	int32 TotalItems = 4;
+	int32 PageSize = 5;
+}
+
+message EscalationLevelProto
+{
+	string Id = 1;
+	string EscalationLevelName = 2;
+	int32 LevelIndex = 3;
+	int32 ResponseMinutes = 4;
+	int32 ResponseHours = 5;
+	int32 ResponseDays = 6;
+	string UserId = 7;
+	string SlaId = 8;
+}
+
+//GET EscalationLevel By Id
+message RequestEscalationLevelById
+{
+	string EscalationLevelId = 1;
+}
+
+message ResponseEscalationLevelById
+{
+	EscalationLevelProto EscalationLevel = 1;
+}

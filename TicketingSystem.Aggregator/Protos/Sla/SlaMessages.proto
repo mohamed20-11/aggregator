@@ -1,0 +1,48 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "TicketingSystem.SLA.Protos";
+
+
+message SlaIds 
+{
+	repeated string SlaIds = 1;
+
+}
+message ResponseSlaIdS 
+{
+	repeated SLA Sla = 1;
+
+}
+
+message SLA
+{
+	int32 ResponseMinutes = 4;
+	int32 ResponseHours = 5;
+	int32 ResponseDays = 6;
+	string SlaId = 8;
+}
+message SlaListResponse
+{
+	repeated SlaData SlaList=1;
+}
+message SlaData
+{
+	string SlaId = 1;
+	string SlaName=2;
+	int32 ImplementMinutes = 3;
+	int32 ImplementHours = 4;
+	int32 ImplementDays = 5;
+	repeated EscaltionLevelResponse EsclationLevelList=6;
+
+}
+message EscaltionLevelResponse
+{
+	string Id = 1;
+	string EscalationLevelName = 2;
+	int32 LevelIndex = 3;
+	int32 ResponseMinutes = 4;
+	int32 ResponseHours = 5;
+	int32 ResponseDays = 6;
+	string UserId = 7;
+	
+}

@@ -1,0 +1,21 @@
+﻿syntax = "proto3";
+option csharp_namespace = "DynamicWorkflow.Aggregator.Protos";
+
+message RequestInstanceId {
+	string id = 1;
+}
+
+message RequestInstanceResponse {
+	string name = 1;
+	string description = 2;
+	string createdOn = 3;
+	string createdBy = 4;
+	repeated RequestTransactionResponse requestTransactions = 5;
+}
+
+message RequestTransactionResponse {
+	string comment = 1;
+	string userId = 2;
+	string createdOn = 3;
+	string decisionDate = 4;
+}
